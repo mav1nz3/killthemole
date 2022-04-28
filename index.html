@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<style type="text/css">
+		.prop {
+			position: absolute;
+			height: 100px;
+			width: 100px;
+			background-image: url(2.png);
+
+
+		}
+		.mole {
+			position: absolute;
+			background-size: 100% 100%;
+			height: 150px;
+			width: 200px;
+			transition: 1s;
+
+		}
+	</style>
+</head>
+<body>
+	<div style="background-color: #559fad; width: 250px; height: 50px" class=""><p style="text-align: center; font-family: kungfont; font-size: 30px;">Score: <span class="scoreT"></span></p></div>
+
+<!-- дивы норы чтобы появится -->
+<div class="prop first" style="top: 100px; left: 505px"><img style="height: 160px; width: 300px;" src="2.png" alt=""></div>
+<div class="prop first" style="top: 100px; left: 805px"><img style="height: 160px; width: 300px;" src="2.png" alt=""></div>
+<div class="prop first" style="top: 100px; left: 1100px"><img style="height: 160px; width: 300px;" src="2.png" alt=""></div>
+<div class="prop first" style="top: 400px; left: 505px"><img style="height: 160px; width: 300px;" src="2.png" alt=""></div>
+<div class="prop first" style="top: 400px; left: 805px"><img style="height: 160px; width: 300px;" src="2.png" alt=""></div>
+<div class="prop first" style="top: 400px; left: 1100px"><img style="height: 160px; width: 300px;" src="2.png" alt=""></div>
+
+
+
+
+<script type="text/javascript">
+	// let first = document.querySelector(".first")
+	// let mole = document.createElement("div");
+	// document.body.appendChild(mole);
+	// first.before(mole);
+	// mole.classList.add("mole")
+	// mole.style.top = "100px";
+	// mole.style.left = "500px";
+
+	let random = function(arg){
+		let rand = Math.round(Math.random()* arg)
+		return rand;
+	}
+
+	let left = [560,860,1160];
+	let names = ["good", "bad"];
+	let score = 0
+	let scoreT = document.querySelector(".scoreT");
+	scoreT.innerHTML = score;
+
+	let createMole = function(){
+		let first = document.querySelector(".first");
+		let mole = document.createElement("div");
+		document.body.appendChild(mole);
+		mole.classList.add("mole");
+		first.before(mole);
+		mole.style.top = "100px";
+		mole.style.left = left[random(2)] + "px";
+		mole.name = names[random(1)];
+		if(mole.name == names[0]){
+			mole.style.backgroundImage = "url(1.png)"
+		}else{
+			mole.style.backgroundImage = "url(3.png)"
+		}
+
+		let show = function(){
+			mole.style.top = "30px"
+		}
+		let hide = function(){
+			mole.style.top = "100px"
+		}
+		setTimeout(show, 1200);
+		setTimeout(hide, 2000);
+
+		mole.onclick = function(){
+			if(mole.name == names[0]){
+				score = score + 2
+				mole.style.display = "none"
+			}else{
+				score = score - 1
+				mole.style.display = "none"
+			}		
+			scoreT.innerHTML = score;
+		}
+	}
+	setInterval(createMole, 700)
+	
+	let createMole1 = function(){
+		let first = document.querySelector(".first");
+		let mole = document.createElement("div");
+		document.body.appendChild(mole);
+		mole.classList.add("mole");
+		first.before(mole);
+		mole.style.top = "400px";
+		mole.style.left = left[random(2)] + "px";
+		mole.name = names[random(1)];
+		if(mole.name == names[0]){
+			mole.style.backgroundImage = "url(1.png)";
+		}else{
+			mole.style.backgroundImage = "url(3.png)";
+		}
+
+		let show = function(){
+			mole.style.top = "320px"
+		}
+		let hide = function(){
+			mole.style.top = "400px"
+		}
+		setTimeout(show, 1200);
+		setTimeout(hide, 2000);
+
+		mole.onclick = function(){
+			if(mole.name == names[0]){
+				score = score + 2
+			}else{
+				score = score - 1
+				mole.style.display = "none"
+			}		
+			scoreT.innerHTML = score;
+		}
+	}
+	setInterval(createMole1, 700)
+	
+</script>
+</body>
+</html>
